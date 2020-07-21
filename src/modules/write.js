@@ -8,7 +8,7 @@ const CHANGE_FIELD = 'write/CHANGE_FIELD' // 특정 key 값 변경
 
 const [WRITE_POST, WRITE_POST_SUCCESS, WRITE_POST_FAILURE] = createRequestActionTypes('write/WRITE_POST')
 
-const SET_ORIGINAL_POST = 'write/SET_ORIGINAL_POST'
+const ORIGINAL_POST = 'write/ORIGINAL_POST'
 
 const [UPDATE_POST, UPDATE_POST_SUCCESS, UPDATE_POST_FAILURE] = createRequestActionTypes('write/UPDATE_POST')
 
@@ -19,17 +19,19 @@ export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
   value
 }))
 
-export const writePost = createAction(WRITE_POST, ({ title, body, tags }) => ({ title, body, tags }))
+export const writePost = createAction(WRITE_POST, ({ subject, content, tags }) => ({ subject, content, tags }))
 
-export const setOriginalPost = createAction(SET_ORIGINAL_POST, (post) => post)
+export const originalPost = createAction(ORIGINAL_POST, (post) => post)
 
-export const updatePost = createAction(UPDATE_POST, ({ id, title, body, tags }) => {
-  return {
-    id,
-    title,
-    body,
-    tags
-  }
+export const updatePost = createAction(UPDATE_POST, ({ number, owner, category, subject, content, tags }) => {
+  console.log('modules → [write.js] → number: ', number)
+  console.log('modules → [write.js] → owner: ', owner)
+  console.log('modules → [write.js] → category: ', category)
+  console.log('modules → [write.js] → subject: ', subject)
+  console.log('modules → [write.js] → content: ', content)
+  console.log('modules → [write.js] → tags: ', tags)
+
+  return { number, owner, category, subject, content, tags }
 })
 
 const writePostSaga = createRequestSaga(WRITE_POST, api.write)
@@ -42,11 +44,12 @@ export function* writeSaga() {
 }
 
 const initialState = {
-  title: '',
-  body: '',
+  number: null,
+  owner: null,
+  subject: '',
+  content: '',
   tags: [],
-  post: null,
-  setOriginalPost: null
+  post: null
 }
 
 const write = handleActions(
@@ -72,13 +75,17 @@ const write = handleActions(
       ...state,
       error: error
     }),
-    [SET_ORIGINAL_POST]: (state, { payload: post }) => ({
-      ...state,
-      title: post.title,
-      body: post.body,
-      tags: post.tags,
-      originalPostId: post.number
-    }),
+    [ORIGINAL_POST]: (state, { payload: post }) => {
+      console.log('modules → [write.js] → post: ', post)
+
+      return {
+        ...state,
+        number: post.number,
+        owner: post.id,
+        subject: post.subject,
+        content: post.content
+      }
+    },
     [UPDATE_POST_SUCCESS]: (state, { payload: post }) => ({
       ...state,
       post,

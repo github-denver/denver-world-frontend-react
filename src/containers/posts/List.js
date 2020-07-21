@@ -10,27 +10,28 @@ const Result = ({ location }) => {
 
   const { posts, error, loading, user } = useSelector(({ posts, loading, user }) => {
     console.log('containers → posts → [List.js] → posts: ', posts)
+    console.log('containers → posts → [List.js] → user: ', user)
 
-    let result = null
+    let data = {}
 
-    if (user.user !== null) {
-      result = user.user.user2
+    if (posts.posts !== null) {
+      data.posts = posts.posts.list
     }
 
-    let result2 = null
-    console.log('containers → posts → [List.js] → posts.posts: ', posts.posts)
-    if (posts.posts !== null) {
-      result2 = posts.posts.list
-      console.log('containers → posts → [List.js] → result2: ', result2)
+    if (user.user !== null) {
+      data.user = user.user.user2
     }
 
     return {
-      posts: result2,
+      posts: data.posts,
       error: posts.error,
       loading: loading['posts/LIST_POSTS'],
-      user: result
+      user: data.user
     }
   })
+
+  console.log('containers → posts → [List.js] → posts: ', posts)
+  console.log('containers → posts → [List.js] → user: ', user)
 
   const dispatch = useDispatch()
 
@@ -44,7 +45,7 @@ const Result = ({ location }) => {
     dispatch(listPosts({ category, number, select, keyword }))
   }, [dispatch, location.search])
 
-  return <List posts={posts} error={error} loading={loading} writeButton={user} />
+  return <List posts={posts} error={error} loading={loading} user={user} />
 }
 
 export default withRouter(Result)

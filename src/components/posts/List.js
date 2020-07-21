@@ -6,10 +6,10 @@ import Info from '../common/Info'
 const Item = ({ post }) => {
   console.log('components → posts → [List.js] → post: ', post)
 
-  return <Info post={{ result: [post] }} />
+  return <Info post={post} />
 }
 
-const List = ({ posts, error, loading, writeButton }) => {
+const List = ({ posts, error, loading, user }) => {
   if (error) {
     if (error.response && error.response.status === 404) {
       console.log('존재하지 않는 포스트입니다.')
@@ -29,8 +29,9 @@ const List = ({ posts, error, loading, writeButton }) => {
     return null
   }
 
+  console.log('components → posts → [List.js] → !posts: ', !posts)
   // 포스트 목록이 존재하지 않을 때
-  if (posts.length === 0) {
+  if (!posts) {
     console.log('포스트 목록이 존재하지 않을 때')
 
     return <p>목록이 존재하지 않습니다.</p>
@@ -38,7 +39,7 @@ const List = ({ posts, error, loading, writeButton }) => {
 
   return (
     <>
-      {writeButton && <Button to="/write">등록</Button>}
+      {user && <Button to="/write">등록</Button>}
 
       <div>
         {posts.map((post) => (

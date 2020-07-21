@@ -9,7 +9,7 @@ import PostPage from './pages/PostPage'
 function App() {
   return (
     <div className="App">
-      <Route component={PostListPage} path={['/:service', '/']} exact />
+      <Route component={PostListPage} path={['/']} exact />
       <Route component={LoginPage} path={'/login'} />
       <Route component={RegisterPage} path={'/register'} />
       <Route component={WritePage} path={'/write'} />

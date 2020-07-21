@@ -4,12 +4,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeField, init } from '../../modules/write'
 
 const Result = () => {
-  const { title, body } = useSelector(({ write }) => {
+  const { number, subject, content } = useSelector(({ write }) => {
     console.log('containers → write → [Editor.js] → write: ', write)
 
     return {
-      title: write.title,
-      body: write.body
+      number: write.number,
+      subject: write.subject,
+      content: write.content
     }
   })
 
@@ -24,7 +25,7 @@ const Result = () => {
     }
   }, [dispatch])
 
-  return <Editor title={title} body={body} onChangeField={onChangeField} />
+  return <Editor number={number} subject={subject} content={content} onChangeField={onChangeField} />
 }
 
 export default Result

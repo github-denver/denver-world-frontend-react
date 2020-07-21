@@ -5,38 +5,45 @@ import { writePost, updatePost } from '../../modules/write'
 import { withRouter } from 'react-router-dom'
 
 const Result = ({ history }) => {
-  const { title, body, tags, post, error, originalPostId } = useSelector(({ write }) => {
+  const { owner, number, subject, content, tags, post, error } = useSelector(({ write }) => {
     console.log('containers → write → [Buttons.js] → write: ', write)
 
     return {
-      title: write.title,
-      body: write.body,
+      number: write.number,
+      owner: write.owner,
+      subject: write.subject,
+      content: write.content,
       tags: write.tags,
       post: write.post,
-      error: write.error,
-      originalPostId: write.originalPostId
+      error: write.error
     }
   })
 
   const dispatch = useDispatch()
 
-  // 포스트 등록
+  // 포스트 수정/등록
   const onPublish = () => {
-    if (originalPostId) {
+    if (owner) {
+      alert('포스트를 수정합니다.')
+
       dispatch(
         updatePost({
-          title,
-          body,
-          tags,
-          id: originalPostId
+          number: number,
+          subject,
+          content,
+          tags
         })
       )
+
+      return
     }
+
+    alert('포스트를 등록합니다.')
 
     dispatch(
       writePost({
-        title,
-        body,
+        subject,
+        content,
         tags
       })
     )
@@ -61,7 +68,7 @@ const Result = ({ history }) => {
       console.error(error)
     }
   }, [history, post, error])
-  return <Buttons onPublish={onPublish} onCancel={onCancel} isEdit={!!originalPostId} />
+  return <Buttons onPublish={onPublish} onCancel={onCancel} isEdit={!!owner} />
 }
 
 export default withRouter(Result)

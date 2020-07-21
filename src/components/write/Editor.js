@@ -2,9 +2,10 @@ import React, { useRef, useEffect } from 'react'
 import Quill from 'quill'
 import 'quill/dist/quill.bubble.css'
 
-const Editor = ({ title, body, onChangeField }) => {
-  console.log('components → write → [Editor.js] → title: ', title)
-  console.log('components → write → [Editor.js] → body: ', body)
+const Editor = ({ number, subject, content, onChangeField }) => {
+  console.log('components → write → [Editor.js] → number: ', number)
+  console.log('components → write → [Editor.js] → subject: ', subject)
+  console.log('components → write → [Editor.js] → content: ', content)
 
   const quillElement = useRef(null)
   const quillInstance = useRef(null)
@@ -29,7 +30,7 @@ const Editor = ({ title, body, onChangeField }) => {
       console.log('components → write → [Editor.js] → source: ', source)
 
       if (source === 'user') {
-        onChangeField({ key: 'body', value: quill.root.innerHTML })
+        onChangeField({ key: 'content', value: quill.root.innerHTML })
       }
     })
   }, [onChangeField])
@@ -41,16 +42,16 @@ const Editor = ({ title, body, onChangeField }) => {
 
     mounted.current = true
 
-    quillInstance.current.root.innerHTML = body
-  }, [body])
+    quillInstance.current.root.innerHTML = content
+  }, [content])
 
-  const onChangeTitle = (event) => {
-    onChangeField({ key: 'title', value: event.target.value })
+  const onChangeSubject = (event) => {
+    onChangeField({ key: 'subject', value: event.target.value })
   }
 
   return (
     <div>
-      <input type="text" placeholder="제목" onChange={onChangeTitle} value={title} />
+      <input type="text" placeholder="제목" onChange={onChangeSubject} value={subject} />
 
       <div ref={quillElement}></div>
     </div>

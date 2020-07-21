@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { readPost, unloadPost } from '../../modules/post'
 import { withRouter } from 'react-router-dom'
 import Buttons from '../../components/post/Buttons'
-import { setOriginalPost } from '../../modules/write'
+import { originalPost } from '../../modules/write'
 import { remove } from '../../lib/api/posts'
 
 const Result = ({ match, history }) => {
@@ -12,23 +12,35 @@ const Result = ({ match, history }) => {
   console.log('containers → post → [View.js] → history: ', history)
 
   const { number } = match.params
+  console.log('containers → post → [View.js] → number: ', number)
 
   const { post, error, loading, user } = useSelector(({ post, loading, user }) => {
     console.log('containers → post → [View.js] → post: ', post)
+    console.log('containers → post → [View.js] → user: ', user)
 
-    let result = null
+    let data = {}
+
+    if (post.post !== null) {
+      data.post = post.post.result[0]
+    }
 
     if (user.user !== null) {
-      result = user.user.user2
+      data.user = user.user.user2
     }
 
     return {
-      post: post.post,
+      post: data.post,
       error: post.error,
       loading: loading['post/READ_POST'],
-      user: result
+      user: data.user
     }
   })
+
+  console.log(
+    '^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^ containers → post → [View.js] → post: ',
+    post
+  )
+  console.log('containers → post → [View.js] → user: ', user)
 
   const dispatch = useDispatch()
 
@@ -42,7 +54,7 @@ const Result = ({ match, history }) => {
   }, [dispatch, number])
 
   const onEdit = () => {
-    dispatch(setOriginalPost(post))
+    dispatch(originalPost(post))
 
     history.push('/write')
   }
@@ -57,9 +69,10 @@ const Result = ({ match, history }) => {
     }
   }
 
-  const ownPost = (user && user.number) === (post && post.user.number)
+  const owner = (post && post.id) === (user && user.id)
+  console.log('containers → post → [View.js] → owner: ', owner)
 
-  return <View post={post} error={error} loading={loading} buttons={ownPost && <Buttons onEdit={onEdit} onRemove={onRemove} />} />
+  return <View post={post} error={error} loading={loading} buttons={owner && <Buttons onEdit={onEdit} onRemove={onRemove} />} />
 }
 
 export default withRouter(Result)
