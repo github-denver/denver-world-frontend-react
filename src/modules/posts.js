@@ -16,18 +16,21 @@ export function* postsSaga() {
 const initialState = {
   posts: null,
   error: null,
-  last: 1
+  pagination: null
 }
 
 const posts = handleActions(
   {
     [LIST_POSTS_SUCCESS]: (state, { payload: posts, meta: response }) => {
-      // console.log('modules → [posts.js] → response: ', response)
+      console.log('modules → [posts.js] → response: ', response)
+
+      const { pagination } = response.data
+      console.log('modules → [posts.js] → pagination: ', pagination)
 
       return {
         ...state,
-        posts
-        // last: parseInt(response)
+        posts,
+        pagination: pagination
       }
     },
     [LIST_POSTS_FAILURE]: (state, { payload: error }) => ({

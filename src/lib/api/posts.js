@@ -1,5 +1,5 @@
-import qs from 'qs'
 import client from './client'
+// import qs from 'qs'
 
 export const write = ({ category, subject, content, thumbnail }) => {
   // console.log('lib → api → [posts.js] → category: ', category)
@@ -23,19 +23,16 @@ export const read = (number) => {
 }
 
 export const list = ({ category, number, select, keyword }) => {
-  // console.log('lib → api → [posts.js] → category: ', category)
-  // console.log('lib → api → [posts.js] → number: ', number)
-  // console.log('lib → api → [posts.js] → select: ', select)
-  // console.log('lib → api → [posts.js] → keyword: ', keyword)
+  console.log('lib → api → [posts.js] → category: ', category)
+  console.log('lib → api → [posts.js] → number: ', number)
+  console.log('lib → api → [posts.js] → select: ', select)
+  console.log('lib → api → [posts.js] → keyword: ', keyword)
 
-  const queryString = qs.stringify({
-    select,
-    keyword
-  })
-
+  // const queryString = qs.stringify({ select, keyword })
   // console.log('lib → api → [posts.js] → queryString: ', queryString)
 
-  return client.get(`/api/board/game/list/${number}?${queryString}`)
+  // return client.get(`/api/board/game/list/${number}?${queryString}`)
+  return client.get(`/api/board/${category}/list/${number}`)
 }
 
 export const update = ({ number, category, subject, content, thumbnail }) => {
