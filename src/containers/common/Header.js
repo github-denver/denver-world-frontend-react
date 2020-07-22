@@ -5,7 +5,7 @@ import { logout } from '../../modules/user'
 
 const Result = () => {
   const { user } = useSelector(({ user }) => {
-    console.log('containers → [Header.js] → user: ', user)
+    // console.log('containers → [Header.js] → user: ', user)
 
     let result = null
 
@@ -13,7 +13,7 @@ const Result = () => {
       result = user.user.user2
     }
 
-    console.log('containers → [Header.js] → result: ', result)
+    // console.log('containers → [Header.js] → result: ', result)
 
     return { user: result }
   })

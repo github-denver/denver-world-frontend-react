@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 
 const Result = ({ history }) => {
   const { owner, number, subject, content, tags, post, error } = useSelector(({ write }) => {
-    console.log('containers → write → [Buttons.js] → write: ', write)
+    // console.log('containers → write → [Buttons.js] → write: ', write)
 
     return {
       number: write.number,
@@ -57,7 +57,7 @@ const Result = ({ history }) => {
   // 성공 혹은 실패 시 할 작업
   useEffect(() => {
     if (post) {
-      console.log('containers → write → [Buttons.js] → post: ', post)
+      // console.log('containers → write → [Buttons.js] → post: ', post)
 
       const { number, service } = post
 

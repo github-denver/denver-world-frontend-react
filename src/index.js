@@ -18,7 +18,7 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaM
 function user() {
   try {
     const user = localStorage.getItem('user')
-    console.log('[index.js] → user: ', user)
+    // console.log('[index.js] → user: ', user)
 
     if (!user) return
 

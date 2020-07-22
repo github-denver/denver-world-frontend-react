@@ -5,7 +5,7 @@ import { changeField, init } from '../../modules/write'
 
 const Result = () => {
   const { number, subject, content } = useSelector(({ write }) => {
-    console.log('containers → write → [Editor.js] → write: ', write)
+    // console.log('containers → write → [Editor.js] → write: ', write)
 
     return {
       number: write.number,

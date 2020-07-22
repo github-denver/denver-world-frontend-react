@@ -8,7 +8,7 @@ const TEMP_SET_USER = 'user/TEMP_SET_USER' // 새로 고침 이후 임시 로그
 const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] = createRequestActionTypes('auth/CHECK') // 회원정보 확인
 
 export const tempSetUser = createAction(TEMP_SET_USER, (user) => {
-  console.log('modules → [user.js] → user: ', user)
+  // console.log('modules → [user.js] → user: ', user)
 
   return user
 })
@@ -22,10 +22,10 @@ export const logout = createAction(LOGOUT)
 const checkSaga = createRequestSaga(CHECK, api.check)
 
 function checkFailureSaga() {
-  console.log('modules → [user.js] → function checkFailureSaga() { .. }')
+  // console.log('modules → [user.js] → function checkFailureSaga() { .. }')
 
   try {
-    console.log("modules → [user.js] → function checkFailureSaga() { .. } → localStorage.getItem('user'): ", localStorage.getItem('user'))
+    // console.log("modules → [user.js] → function checkFailureSaga() { .. } → localStorage.getItem('user'): ", localStorage.getItem('user'))
 
     localStorage.removeItem('user')
   } catch (error) {
@@ -34,21 +34,21 @@ function checkFailureSaga() {
 }
 
 function* logoutSaga() {
-  console.log('modules → [user.js] → function logoutSaga() { .. }')
+  // console.log('modules → [user.js] → function logoutSaga() { .. }')
 
   try {
     yield call(api.logout)
 
     localStorage.removeItem('user')
 
-    console.log("modules → [user.js] → function logoutSaga() { .. } → localStorage.getItem('user'): ", localStorage.getItem('user'))
+    // console.log("modules → [user.js] → function logoutSaga() { .. } → localStorage.getItem('user'): ", localStorage.getItem('user'))
   } catch (error) {
     console.error(error)
   }
 }
 
 export function* userSaga() {
-  console.log('modules → [user.js] → export function* userSaga() { .. }')
+  // console.log('modules → [user.js] → export function* userSaga() { .. }')
   yield takeLatest(CHECK, checkSaga)
   yield takeLatest(CHECK_FAILURE, checkFailureSaga)
   yield takeLatest(LOGOUT, logoutSaga)

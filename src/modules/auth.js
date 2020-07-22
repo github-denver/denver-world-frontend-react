@@ -51,9 +51,9 @@ const auth = handleActions(
       })
     },
     [INITIAL_FORM]: (state, { payload: form }) => {
-      console.log('modules → [auth.js] → state: ', state)
-      console.log('modules → [auth.js] → form: ', form)
-      console.log('modules → [auth.js] → initialState[form]: ', initialState[form])
+      // console.log('modules → [auth.js] → state: ', state)
+      // console.log('modules → [auth.js] → form: ', form)
+      // console.log('modules → [auth.js] → initialState[form]: ', initialState[form])
 
       return {
         ...state,

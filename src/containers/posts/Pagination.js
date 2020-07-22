@@ -5,16 +5,16 @@ import { useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 const Result = ({ location }) => {
-  console.log('containers → posts → [Pagination.js] → location: ', location)
+  // console.log('containers → posts → [Pagination.js] → location: ', location)
 
   const { last, posts, loading } = useSelector(({ posts, loading }) => {
-    console.log('containers → posts → [Pagination.js] → posts: ', posts)
+    // console.log('containers → posts → [Pagination.js] → posts: ', posts)
 
     let result = null
-    console.log('containers → posts → [Pagination.js] → posts.posts: ', posts.posts)
+    // console.log('containers → posts → [Pagination.js] → posts.posts: ', posts.posts)
     if (posts.posts !== null) {
       result = posts.posts.list
-      console.log('containers → posts → [Pagination.js] → result: ', result)
+      // console.log('containers → posts → [Pagination.js] → result: ', result)
     }
 
     return {
@@ -26,7 +26,7 @@ const Result = ({ location }) => {
 
   // 읽어들이는 중이거나 아직 포스트 데이터가 존재하지 않을 때
   if (loading || !posts) {
-    console.log('읽어들이는 중이거나 아직 포스트 데이터가 존재하지 않을 때')
+    // console.log('읽어들이는 중이거나 아직 포스트 데이터가 존재하지 않을 때')
 
     return null
   }
@@ -35,9 +35,9 @@ const Result = ({ location }) => {
   const { tag, username, page = 1 } = qs.parse(location.seatch, {
     ignoreQueryPrefix: true
   })
-  console.log('containers → posts → [Pagination.js] → tag: ', tag)
-  console.log('containers → posts → [Pagination.js] → username: ', username)
-  console.log('containers → posts → [Pagination.js] → page: ', page)
+  // console.log('containers → posts → [Pagination.js] → tag: ', tag)
+  // console.log('containers → posts → [Pagination.js] → username: ', username)
+  // console.log('containers → posts → [Pagination.js] → page: ', page)
 
   return <Pagination tag={tag} username={username} page={parseInt(page, 10)} last={last} />
 }

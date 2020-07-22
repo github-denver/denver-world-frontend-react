@@ -9,10 +9,10 @@ const queryString = ({ username, tag, page }) => {
 }
 
 const Pagination = ({ page, last, username, tag }) => {
-  console.log('components → posts → [Pagination.js] → page: ', page)
-  console.log('components → posts → [Pagination.js] → last: ', last)
-  console.log('components → posts → [Pagination.js] → username: ', username)
-  console.log('components → posts → [Pagination.js] → tag: ', tag)
+  // console.log('components → posts → [Pagination.js] → page: ', page)
+  // console.log('components → posts → [Pagination.js] → last: ', last)
+  // console.log('components → posts → [Pagination.js] → username: ', username)
+  // console.log('components → posts → [Pagination.js] → tag: ', tag)
 
   return (
     <>

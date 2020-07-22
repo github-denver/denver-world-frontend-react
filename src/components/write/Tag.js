@@ -3,7 +3,7 @@ import React, { useState, useCallback, useEffect } from 'react'
 const Item = React.memo(({ tag, onRemove }) => <li onClick={() => onRemove(tag)}>#{tag}</li>)
 
 const List = React.memo(({ tags, onRemove }) => {
-  console.log('components → write → [Tag.js] → tags: ', tags)
+  // console.log('components → write → [Tag.js] → tags: ', tags)
 
   return (
     <ul>
@@ -24,7 +24,7 @@ const Tag = ({ t, onChangeTags }) => {
       if (tags.includes(tag)) return // 존재한다면 추가하지 않습니다.
 
       const next = [...tags, tag]
-      console.log('components → write → [Tag.js] → next: ', next)
+      // console.log('components → write → [Tag.js] → next: ', next)
 
       setTags([...tags, tag])
 
@@ -48,7 +48,7 @@ const Tag = ({ t, onChangeTags }) => {
     (event) => {
       event.preventDefault()
 
-      console.log('components → write → [Tag.js] → input: ', input)
+      // console.log('components → write → [Tag.js] → input: ', input)
 
       insert(input.trim())
 

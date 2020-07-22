@@ -14,7 +14,7 @@ const message = {
 
 const Form = ({ type, form, onChange, onSubmit, error }) => {
   const result = message[type]
-  console.log('components → auth → [Form.js] → result: ', result)
+  // console.log('components → auth → [Form.js] → result: ', result)
 
   return (
     <Styled.form>

@@ -20,10 +20,10 @@ export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
 }))
 
 export const writePost = createAction(WRITE_POST, ({ category, subject, content, thumbnail }) => {
-  console.log('modules → [write.js] → category: ', category)
-  console.log('modules → [write.js] → subject: ', subject)
-  console.log('modules → [write.js] → content: ', content)
-  console.log('modules → [write.js] → thumbnail: ', thumbnail)
+  // console.log('modules → [write.js] → category: ', category)
+  // console.log('modules → [write.js] → subject: ', subject)
+  // console.log('modules → [write.js] → content: ', content)
+  // console.log('modules → [write.js] → thumbnail: ', thumbnail)
 
   return { category, subject, content, thumbnail }
 })
@@ -31,12 +31,12 @@ export const writePost = createAction(WRITE_POST, ({ category, subject, content,
 export const originalPost = createAction(ORIGINAL_POST, (post) => post)
 
 export const updatePost = createAction(UPDATE_POST, ({ number, owner, category, subject, content, tags }) => {
-  console.log('modules → [write.js] → number: ', number)
-  console.log('modules → [write.js] → owner: ', owner)
-  console.log('modules → [write.js] → category: ', category)
-  console.log('modules → [write.js] → subject: ', subject)
-  console.log('modules → [write.js] → content: ', content)
-  console.log('modules → [write.js] → tags: ', tags)
+  // console.log('modules → [write.js] → number: ', number)
+  // console.log('modules → [write.js] → owner: ', owner)
+  // console.log('modules → [write.js] → category: ', category)
+  // console.log('modules → [write.js] → subject: ', subject)
+  // console.log('modules → [write.js] → content: ', content)
+  // console.log('modules → [write.js] → tags: ', tags)
 
   return { number, owner, category, subject, content, tags }
 })
@@ -83,7 +83,7 @@ const write = handleActions(
       error: error
     }),
     [ORIGINAL_POST]: (state, { payload: post }) => {
-      console.log('modules → [write.js] → post: ', post)
+      // console.log('modules → [write.js] → post: ', post)
 
       return {
         ...state,

@@ -3,9 +3,9 @@ import Quill from 'quill'
 import 'quill/dist/quill.bubble.css'
 
 const Editor = ({ number, subject, content, onChangeField }) => {
-  console.log('components → write → [Editor.js] → number: ', number)
-  console.log('components → write → [Editor.js] → subject: ', subject)
-  console.log('components → write → [Editor.js] → content: ', content)
+  // console.log('components → write → [Editor.js] → number: ', number)
+  // console.log('components → write → [Editor.js] → subject: ', subject)
+  // console.log('components → write → [Editor.js] → content: ', content)
 
   const quillElement = useRef(null)
   const quillInstance = useRef(null)
@@ -27,7 +27,7 @@ const Editor = ({ number, subject, content, onChangeField }) => {
     const quill = quillInstance.current
 
     quill.on('text-change', (delta, oldDelta, source) => {
-      console.log('components → write → [Editor.js] → source: ', source)
+      // console.log('components → write → [Editor.js] → source: ', source)
 
       if (source === 'user') {
         onChangeField({ key: 'content', value: quill.root.innerHTML })

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Info = ({ post }) => {
-  console.log('components → common → [Info.js] → post: ', post)
+  // console.log('components → common → [Info.js] → post: ', post)
 
   const { number, id, name, category, subject, content, files, thumbnail, upload2, address, count, regdate } = post
 

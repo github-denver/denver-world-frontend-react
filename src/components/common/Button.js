@@ -28,7 +28,7 @@ Styled.link = styled(Link)`
 `
 
 const Button = (props) => {
-  console.log('components → common → [Button.js] → props: ', props)
+  // console.log('components → common → [Button.js] → props: ', props)
 
   return props.to ? <Styled.link {...props} /> : <Styled.button {...props} />
 }

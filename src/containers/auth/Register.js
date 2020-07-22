@@ -6,7 +6,7 @@ import { check } from '../../modules/user'
 import { withRouter } from 'react-router-dom'
 
 const Register = ({ history }) => {
-  console.log('containers → auth → [Register.js] → history: ', history)
+  // console.log('containers → auth → [Register.js] → history: ', history)
 
   const [message, setMessage] = useState(null)
 
@@ -18,10 +18,10 @@ const Register = ({ history }) => {
       user: user.user
     }
   })
-  console.log('containers → auth → [Register.js] → form: ', form)
-  console.log('containers → auth → [Register.js] → auth: ', auth)
-  console.log('containers → auth → [Register.js] → error: ', error)
-  console.log('containers → auth → [Register.js] → user: ', user)
+  // console.log('containers → auth → [Register.js] → form: ', form)
+  // console.log('containers → auth → [Register.js] → auth: ', auth)
+  // console.log('containers → auth → [Register.js] → error: ', error)
+  // console.log('containers → auth → [Register.js] → user: ', user)
 
   const dispatch = useDispatch()
 
@@ -41,9 +41,9 @@ const Register = ({ history }) => {
     event.preventDefault()
 
     const { id, password, confirm } = form
-    console.log('containers → auth → [Register.js] → id: ', id)
-    console.log('containers → auth → [Register.js] → password: ', password)
-    console.log('containers → auth → [Register.js] → confirm: ', confirm)
+    // console.log('containers → auth → [Register.js] → id: ', id)
+    // console.log('containers → auth → [Register.js] → password: ', password)
+    // console.log('containers → auth → [Register.js] → confirm: ', confirm)
 
     if ([id, password, confirm].includes('')) {
       setMessage('필수 정보를 입력해 주세요!')
@@ -71,7 +71,7 @@ const Register = ({ history }) => {
     if (error) {
       console.error(error)
 
-      console.log('containers → auth → [Register.js] → error.response: ', error.response)
+      // console.log('containers → auth → [Register.js] → error.response: ', error.response)
 
       if (error.response.status === 400) {
         setMessage('이미 가입된 아이디입니다!')
@@ -85,8 +85,8 @@ const Register = ({ history }) => {
     }
 
     if (auth) {
-      console.log('containers → auth → [Register.js] → 회원가입에 성공했어요!')
-      console.log('containers → auth → [Register.js] → auth: ', auth)
+      // console.log('containers → auth → [Register.js] → 회원가입에 성공했어요!')
+      // console.log('containers → auth → [Register.js] → auth: ', auth)
 
       dispatch(check())
     }
@@ -94,8 +94,8 @@ const Register = ({ history }) => {
 
   useEffect(() => {
     if (user) {
-      console.log('containers → auth → [Register.js] → check API 성공')
-      console.log('containers → auth → [Register.js] → user: ', user)
+      // console.log('containers → auth → [Register.js] → check API 성공')
+      // console.log('containers → auth → [Register.js] → user: ', user)
 
       history.push('/')
 

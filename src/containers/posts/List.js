@@ -6,11 +6,11 @@ import { listPosts } from '../../modules/posts'
 import { withRouter } from 'react-router-dom'
 
 const Result = ({ location }) => {
-  console.log('containers → posts → [List.js] → location: ', location)
+  // console.log('containers → posts → [List.js] → location: ', location)
 
   const { posts, error, loading, user } = useSelector(({ posts, loading, user }) => {
-    console.log('containers → posts → [List.js] → posts: ', posts)
-    console.log('containers → posts → [List.js] → user: ', user)
+    // console.log('containers → posts → [List.js] → posts: ', posts)
+    // console.log('containers → posts → [List.js] → user: ', user)
 
     let data = {}
 
@@ -30,8 +30,8 @@ const Result = ({ location }) => {
     }
   })
 
-  console.log('containers → posts → [List.js] → posts: ', posts)
-  console.log('containers → posts → [List.js] → user: ', user)
+  // console.log('containers → posts → [List.js] → posts: ', posts)
+  // console.log('containers → posts → [List.js] → user: ', user)
 
   const dispatch = useDispatch()
 
@@ -40,7 +40,7 @@ const Result = ({ location }) => {
       ignoreQueryPrefix: true
     })
 
-    console.log('containers → posts → [List.js] → location.search: ', location.search)
+    // console.log('containers → posts → [List.js] → location.search: ', location.search)
 
     dispatch(listPosts({ category, number, select, keyword }))
   }, [dispatch, location.search])

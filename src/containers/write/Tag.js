@@ -5,7 +5,7 @@ import { changeField } from '../../modules/write'
 
 const Result = () => {
   const tags = useSelector((state) => {
-    console.log('containers → write → [Tag.js] → state: ', state)
+    // console.log('containers → write → [Tag.js] → state: ', state)
 
     return state.write.tags
   })
@@ -13,7 +13,7 @@ const Result = () => {
   const dispatch = useDispatch()
 
   const onChangeTags = (tag) => {
-    console.log('containers → write → [Tag.js] → tag: ', tag)
+    // console.log('containers → write → [Tag.js] → tag: ', tag)
 
     dispatch(changeField({ key: 'tags', value: tag }))
   }

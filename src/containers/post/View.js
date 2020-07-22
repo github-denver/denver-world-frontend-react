@@ -8,15 +8,15 @@ import { originalPost } from '../../modules/write'
 import { remove } from '../../lib/api/posts'
 
 const Result = ({ match, history }) => {
-  console.log('containers → post → [View.js] → match: ', match)
-  console.log('containers → post → [View.js] → history: ', history)
+  // console.log('containers → post → [View.js] → match: ', match)
+  // console.log('containers → post → [View.js] → history: ', history)
 
   const { number } = match.params
-  console.log('containers → post → [View.js] → number: ', number)
+  // console.log('containers → post → [View.js] → number: ', number)
 
   const { post, error, loading, user } = useSelector(({ post, loading, user }) => {
-    console.log('containers → post → [View.js] → post: ', post)
-    console.log('containers → post → [View.js] → user: ', user)
+    // console.log('containers → post → [View.js] → post: ', post)
+    // console.log('containers → post → [View.js] → user: ', user)
 
     let data = {}
 
@@ -36,8 +36,8 @@ const Result = ({ match, history }) => {
     }
   })
 
-  console.log('containers → post → [View.js] → post: ', post)
-  console.log('containers → post → [View.js] → user: ', user)
+  // console.log('containers → post → [View.js] → post: ', post)
+  // console.log('containers → post → [View.js] → user: ', user)
 
   const dispatch = useDispatch()
 
@@ -58,7 +58,7 @@ const Result = ({ match, history }) => {
 
   const onRemove = async () => {
     try {
-      console.log('containers → post → [View.js] → number: ', number)
+      // console.log('containers → post → [View.js] → number: ', number)
 
       await remove(number)
 
@@ -69,7 +69,7 @@ const Result = ({ match, history }) => {
   }
 
   const owner = (post && post.id) === (user && user.id)
-  console.log('containers → post → [View.js] → owner: ', owner)
+  // console.log('containers → post → [View.js] → owner: ', owner)
 
   return <View post={post} error={error} loading={loading} buttons={owner && <Buttons onEdit={onEdit} onRemove={onRemove} />} />
 }
