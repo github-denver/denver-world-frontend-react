@@ -25,8 +25,7 @@ function checkFailureSaga() {
   console.log('modules → [user.js] → function checkFailureSaga() { .. }')
 
   try {
-    const user = localStorage.getItem('user')
-    console.log('modules → [user.js] → function checkFailureSaga() { .. } → user: ', user)
+    console.log("modules → [user.js] → function checkFailureSaga() { .. } → localStorage.getItem('user'): ", localStorage.getItem('user'))
 
     localStorage.removeItem('user')
   } catch (error) {
