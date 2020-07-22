@@ -59,9 +59,9 @@ const Result = ({ history }) => {
     if (post) {
       console.log('containers → write → [Buttons.js] → post: ', post)
 
-      // const { _id, user } = post
+      const { number, service } = post
 
-      // history.push(`/@${user.username}/${_id}`)
+      history.push(`/${service}/view/${number}`)
     }
 
     if (error) {

@@ -19,7 +19,14 @@ export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
   value
 }))
 
-export const writePost = createAction(WRITE_POST, ({ subject, content, tags }) => ({ subject, content, tags }))
+export const writePost = createAction(WRITE_POST, ({ category, subject, content, thumbnail }) => {
+  console.log('modules → [write.js] → category: ', category)
+  console.log('modules → [write.js] → subject: ', subject)
+  console.log('modules → [write.js] → content: ', content)
+  console.log('modules → [write.js] → thumbnail: ', thumbnail)
+
+  return { category, subject, content, thumbnail }
+})
 
 export const originalPost = createAction(ORIGINAL_POST, (post) => post)
 

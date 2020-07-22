@@ -1,12 +1,19 @@
 import qs from 'qs'
 import client from './client'
 
-export const write = ({ title, body, tags }) => {
-  console.log('lib → api → [posts.js] → title: ', title)
-  console.log('lib → api → [posts.js] → body: ', body)
-  console.log('lib → api → [posts.js] → tags: ', tags)
+export const write = ({ category, subject, content, thumbnail }) => {
+  console.log('lib → api → [posts.js] → category: ', category)
+  console.log('lib → api → [posts.js] → subject: ', subject)
+  console.log('lib → api → [posts.js] → content: ', content)
+  console.log('lib → api → [posts.js] → thumbnail: ', thumbnail)
 
-  return client.post('/api/board/game/write', { title, body, tags })
+  const formData = new FormData()
+  formData.append('category', category)
+  formData.append('subject', subject)
+  formData.append('content', content)
+  formData.append('thumbnail', thumbnail)
+
+  return client.post('/api/board/game/write', formData)
 }
 
 export const read = (number) => {
@@ -45,12 +52,11 @@ export const update = ({ number, category, subject, content, thumbnail }) => {
   formData.append('content', content)
   formData.append('thumbnail', thumbnail)
 
-  alert(`/api/board/game/modify/${number}`)
   return client.post(`/api/board/game/modify/${number}`, formData)
 }
 
 export const remove = (number) => {
   console.log('lib → api → [posts.js] → number: ', number)
 
-  return client.post(`/api/board/game/delete/${number}`)
+  return client.get(`/api/board/game/delete/${number}`)
 }
