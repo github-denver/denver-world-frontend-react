@@ -22,8 +22,8 @@ const Form = ({ type, form, onChange, onSubmit, error }) => {
 
       <form onSubmit={onSubmit}>
         <input type="text" name="id" autoComplete="id" placeholder="아이디" onChange={onChange} value={form.id} />
+        {type === 'register' && <input type="text" name="name" autoComplete="name" placeholder="이름" onChange={onChange} value={form.name} />}
         <input type="password" name="password" autoComplete="password" placeholder="패스워드" onChange={onChange} value={form.password} />
-
         {type === 'register' && (
           <input type="password" name="confirm" autoComplete="password" placeholder="패스워드 확인" onChange={onChange} value={form.confirm} />
         )}

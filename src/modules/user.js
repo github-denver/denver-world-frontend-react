@@ -2,6 +2,7 @@ import { createAction, handleActions } from 'redux-actions'
 import createRequestSaga, { createRequestActionTypes } from '../lib/createRequestSaga'
 import { takeLatest, call } from 'redux-saga/effects'
 import * as api from '../lib/api/auth'
+import Cookies from 'js-cookie'
 
 const TEMP_SET_USER = 'user/TEMP_SET_USER' // 새로 고침 이후 임시 로그인 처리
 
@@ -28,6 +29,8 @@ function checkFailureSaga() {
     // console.log("modules → [user.js] → function checkFailureSaga() { .. } → localStorage.getItem('user'): ", localStorage.getItem('user'))
 
     localStorage.removeItem('user')
+
+    Cookies.remove('accessToken')
   } catch (error) {
     console.error(error)
   }
@@ -40,6 +43,8 @@ function* logoutSaga() {
     yield call(api.logout)
 
     localStorage.removeItem('user')
+
+    Cookies.remove('accessToken')
 
     // console.log("modules → [user.js] → function logoutSaga() { .. } → localStorage.getItem('user'): ", localStorage.getItem('user'))
   } catch (error) {
@@ -62,6 +67,8 @@ const initialState = {
 const user = handleActions(
   {
     [TEMP_SET_USER]: (state, { payload: user }) => {
+      // console.log('modules → [user.js] → user: ', user)
+
       return {
         ...state,
         user

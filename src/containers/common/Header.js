@@ -6,16 +6,31 @@ import { logout } from '../../modules/user'
 const Result = () => {
   const { user } = useSelector(({ user }) => {
     // console.log('containers → [Header.js] → user: ', user)
+    // console.log('containers → [Header.js] → user.user : ', user.user)
+    // console.log('containers → [Header.js] → typeof user.user : ', typeof user.user)
+    // console.log('')
 
-    let result = null
+    let data = {}
 
     if (user.user !== null) {
-      result = user.user.user2
+      // console.log('containers → [Header.js] → user.user : ', user.user)
+      // console.log('containers → [Header.js] → user.user.user2 : ', user.user.user2)
+      // console.log('containers → [Header.js] → typeof user.user.user2 : ', typeof user.user.user2)
+      // console.log('')
+
+      const result = typeof user.user === 'string' ? JSON.parse(user.user) : user.user
+      // console.log('containers → [Header.js] → result : ', result)
+      // console.log('containers → [Header.js] → result.user2 : ', result.user2)
+      // console.log('')
+
+      // result = user.user.user2
+      data.user = result.user2
     }
 
-    // console.log('containers → [Header.js] → result: ', result)
+    // console.log('containers → [Header.js] → data.user: ', data.user)
+    // console.log('')
 
-    return { user: result }
+    return { user: data.user }
   })
 
   const dispatch = useDispatch()

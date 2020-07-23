@@ -12,14 +12,14 @@ const [REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE] = createRequestActionTypes(
 
 export const changeField = createAction(CHANGE_FIELD, ({ form, key, value }) => ({
   form, // login, register
-  key, // id, password, confirm
+  key, // id, name, password, confirm
   value
 }))
 
 export const initializeForm = createAction(INITIAL_FORM, (form) => form) // login, register
 
 export const login = createAction(LOGIN, ({ id, password }) => ({ id, password }))
-export const register = createAction(REGISTER, ({ id, password }) => ({ id, password }))
+export const register = createAction(REGISTER, ({ id, name, password }) => ({ id, name, password }))
 
 const loginSaga = createRequestSaga(LOGIN, api.login)
 const registerSaga = createRequestSaga(REGISTER, api.register)
@@ -36,10 +36,11 @@ const initialState = {
   },
   register: {
     id: '',
+    name: '',
     password: '',
     confirm: ''
   },
-  auth: null,
+  token: null,
   error: null
 }
 

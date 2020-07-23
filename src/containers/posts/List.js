@@ -11,6 +11,7 @@ const Result = ({ location }) => {
   const { posts, error, loading, user } = useSelector(({ posts, loading, user }) => {
     // console.log('containers → posts → [List.js] → posts: ', posts)
     // console.log('containers → posts → [List.js] → user: ', user)
+    // console.log('')
 
     let data = {}
 
@@ -19,7 +20,13 @@ const Result = ({ location }) => {
     }
 
     if (user.user !== null) {
-      data.user = user.user.user2
+      const result = typeof user.user === 'string' ? JSON.parse(user.user) : user.user
+      // console.log('containers → [List.js] → result : ', result)
+      // console.log('containers → [List.js] → result.user2 : ', result.user2)
+      // console.log('')
+
+      // data.user = user.user.user2
+      data.user = result.user2
     }
 
     return {
