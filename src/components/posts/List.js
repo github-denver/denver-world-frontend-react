@@ -22,6 +22,7 @@ const List = ({ posts, error, loading, user }) => {
     return <p>에러가 발생했어요!</p>
   }
 
+  // console.log('components → posts → [List.js] → loading: ', loading)
   // 읽어들이는 중이거나 아직 포스트 데이터가 존재하지 않을 때
   if (loading || !posts) {
     // console.log('읽어들이는 중이거나 아직 포스트 데이터가 존재하지 않을 때')

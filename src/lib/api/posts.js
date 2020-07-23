@@ -23,10 +23,10 @@ export const read = (number) => {
 }
 
 export const list = ({ category, number, select, keyword }) => {
-  console.log('lib → api → [posts.js] → category: ', category)
-  console.log('lib → api → [posts.js] → number: ', number)
-  console.log('lib → api → [posts.js] → select: ', select)
-  console.log('lib → api → [posts.js] → keyword: ', keyword)
+  // console.log('lib → api → [posts.js] → category: ', category)
+  // console.log('lib → api → [posts.js] → number: ', number)
+  // console.log('lib → api → [posts.js] → select: ', select)
+  // console.log('lib → api → [posts.js] → keyword: ', keyword)
 
   // const queryString = qs.stringify({ select, keyword })
   // console.log('lib → api → [posts.js] → queryString: ', queryString)
