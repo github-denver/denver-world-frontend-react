@@ -1,13 +1,13 @@
 import React from 'react'
-import AuthTemplate from '../components/auth/Template'
+import Template from '../components/auth/Template'
 import Login from '../containers/auth/Login'
 
 const LoginPage = () => {
   return (
     <div>
-      <AuthTemplate>
+      <Template>
         <Login />
-      </AuthTemplate>
+      </Template>
     </div>
   )
 }

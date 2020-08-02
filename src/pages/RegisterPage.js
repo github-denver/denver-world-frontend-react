@@ -1,13 +1,13 @@
 import React from 'react'
-import AuthTemplate from '../components/auth/Template'
+import Template from '../components/auth/Template'
 import Register from '../containers/auth/Register'
 
 const RegisterPage = () => {
   return (
     <div>
-      <AuthTemplate>
+      <Template>
         <Register />
-      </AuthTemplate>
+      </Template>
     </div>
   )
 }
