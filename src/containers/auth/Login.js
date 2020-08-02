@@ -23,8 +23,10 @@ const Login = ({ history }) => {
     }
 
     // console.log('containers → auth → [Login.js] → auth.auth : ', auth.auth)
-    if (typeof auth.auth !== 'undefined') {
+    // if (typeof auth.auth !== 'undefined') {
+    if (typeof auth.auth !== 'undefined' && auth.auth !== null) {
       data.token = auth.auth.accessToken
+      // console.log('containers → auth → [Login.js] → data.token: ', data.token)
     }
 
     return {
